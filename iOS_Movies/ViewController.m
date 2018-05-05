@@ -16,7 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+//    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+//    UIView * separator = [[UIView alloc] initWithFrame:CGRectMake(20, 425, width-40, 1)];
+//    separator.backgroundColor = [UIColor colorWithWhite:0.7 alpha:1];
+//    [self.view addSubview:separator];
 }
 
 

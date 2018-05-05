@@ -15,6 +15,11 @@
 		EF095199209E418200F7CEBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF095197209E418200F7CEBD /* LaunchScreen.storyboard */; };
 		EF09519C209E418200F7CEBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF09519B209E418200F7CEBD /* main.m */; };
 		EF21E1FF209E434900305488 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = EF21E1FE209E434900305488 /* Movie.m */; };
+		EF21E208209E4DC900305488 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF21E207209E4DC900305488 /* MainViewController.m */; };
+		EF21E20B209E4DDD00305488 /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF21E20A209E4DDD00305488 /* FavoriteViewController.m */; };
+		EF21E20D209E50DD00305488 /* 26769-234.png in Resources */ = {isa = PBXBuildFile; fileRef = EF21E20C209E50DD00305488 /* 26769-234.png */; };
+		EF21E210209E535A00305488 /* heart1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF21E20E209E535900305488 /* heart1.jpg */; };
+		EF21E211209E535A00305488 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = EF21E20F209E535A00305488 /* heart.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +38,13 @@
 		EF09519B209E418200F7CEBD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EF21E1FD209E434900305488 /* Movie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		EF21E1FE209E434900305488 /* Movie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
+		EF21E206209E4DC900305488 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		EF21E207209E4DC900305488 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		EF21E209209E4DDD00305488 /* FavoriteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoriteViewController.h; sourceTree = "<group>"; };
+		EF21E20A209E4DDD00305488 /* FavoriteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoriteViewController.m; sourceTree = "<group>"; };
+		EF21E20C209E50DD00305488 /* 26769-234.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "26769-234.png"; sourceTree = "<group>"; };
+		EF21E20E209E535900305488 /* heart1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = heart1.jpg; sourceTree = "<group>"; };
+		EF21E20F209E535A00305488 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,15 +99,22 @@
 			children = (
 				EF09518C209E418100F7CEBD /* AppDelegate.h */,
 				EF09518D209E418100F7CEBD /* AppDelegate.m */,
+				EF21E206209E4DC900305488 /* MainViewController.h */,
+				EF21E207209E4DC900305488 /* MainViewController.m */,
+				EF21E20C209E50DD00305488 /* 26769-234.png */,
 				EF09518F209E418100F7CEBD /* ViewController.h */,
+				EF21E20F209E535A00305488 /* heart.png */,
+				EF21E20E209E535900305488 /* heart1.jpg */,
 				EF095190209E418100F7CEBD /* ViewController.m */,
+				EF21E209209E4DDD00305488 /* FavoriteViewController.h */,
+				EF21E20A209E4DDD00305488 /* FavoriteViewController.m */,
 				EF095192209E418100F7CEBD /* Main.storyboard */,
 				EF095195209E418200F7CEBD /* Assets.xcassets */,
-				EF095197209E418200F7CEBD /* LaunchScreen.storyboard */,
 				EF09519A209E418200F7CEBD /* Info.plist */,
 				EF09519B209E418200F7CEBD /* main.m */,
 				EF21E1FD209E434900305488 /* Movie.h */,
 				EF21E1FE209E434900305488 /* Movie.m */,
+				EF095197209E418200F7CEBD /* LaunchScreen.storyboard */,
 			);
 			path = iOS_Movies;
 			sourceTree = "<group>";
@@ -158,8 +177,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF21E20D209E50DD00305488 /* 26769-234.png in Resources */,
 				EF095199209E418200F7CEBD /* LaunchScreen.storyboard in Resources */,
 				EF095196209E418200F7CEBD /* Assets.xcassets in Resources */,
+				EF21E210209E535A00305488 /* heart1.jpg in Resources */,
+				EF21E211209E535A00305488 /* heart.png in Resources */,
 				EF095194209E418100F7CEBD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,9 +214,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF21E20B209E4DDD00305488 /* FavoriteViewController.m in Sources */,
 				EF095191209E418100F7CEBD /* ViewController.m in Sources */,
 				EF09519C209E418200F7CEBD /* main.m in Sources */,
 				EF21E1FF209E434900305488 /* Movie.m in Sources */,
+				EF21E208209E4DC900305488 /* MainViewController.m in Sources */,
 				EF09518E209E418100F7CEBD /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
