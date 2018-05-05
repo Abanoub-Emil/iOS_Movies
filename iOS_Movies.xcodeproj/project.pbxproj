@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42A78F09FBD2DE357C6FF10F /* libPods-iOS_Movies.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 924F1C4BA1493FD96CF8E1A0 /* libPods-iOS_Movies.a */; };
 		EF09518E209E418100F7CEBD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF09518D209E418100F7CEBD /* AppDelegate.m */; };
 		EF095191209E418100F7CEBD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF095190209E418100F7CEBD /* ViewController.m */; };
 		EF095194209E418100F7CEBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF095192209E418100F7CEBD /* Main.storyboard */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E8B13F05E2E679C6552ECAC /* Pods-iOS_Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Movies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Movies/Pods-iOS_Movies.debug.xcconfig"; sourceTree = "<group>"; };
+		4EB43593FE136FFC3A957AF8 /* Pods-iOS_Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Movies.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Movies/Pods-iOS_Movies.release.xcconfig"; sourceTree = "<group>"; };
+		924F1C4BA1493FD96CF8E1A0 /* libPods-iOS_Movies.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS_Movies.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF095189209E418100F7CEBD /* iOS_Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF09518C209E418100F7CEBD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EF09518D209E418100F7CEBD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -33,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42A78F09FBD2DE357C6FF10F /* libPods-iOS_Movies.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A05B4875D551DFA8EAD576E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3E8B13F05E2E679C6552ECAC /* Pods-iOS_Movies.debug.xcconfig */,
+				4EB43593FE136FFC3A957AF8 /* Pods-iOS_Movies.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		215BF002A8BB50141FA5FCF0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				924F1C4BA1493FD96CF8E1A0 /* libPods-iOS_Movies.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EF095180209E418100F7CEBD = {
 			isa = PBXGroup;
 			children = (
 				EF09518B209E418100F7CEBD /* iOS_Movies */,
 				EF09518A209E418100F7CEBD /* Products */,
+				0A05B4875D551DFA8EAD576E /* Pods */,
+				215BF002A8BB50141FA5FCF0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +102,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF09519F209E418200F7CEBD /* Build configuration list for PBXNativeTarget "iOS_Movies" */;
 			buildPhases = (
+				20EB9D1C3FD3F9A1212BAC44 /* [CP] Check Pods Manifest.lock */,
 				EF095185209E418100F7CEBD /* Sources */,
 				EF095186209E418100F7CEBD /* Frameworks */,
 				EF095187209E418100F7CEBD /* Resources */,
@@ -135,6 +160,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20EB9D1C3FD3F9A1212BAC44 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOS_Movies-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EF095185209E418100F7CEBD /* Sources */ = {
@@ -281,15 +327,13 @@
 		};
 		EF0951A0209E418200F7CEBD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E8B13F05E2E679C6552ECAC /* Pods-iOS_Movies.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MX33C5A88B;
 				INFOPLIST_FILE = iOS_Movies/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "WMAD.iOS-Movies";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -298,15 +342,13 @@
 		};
 		EF0951A1209E418200F7CEBD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EB43593FE136FFC3A957AF8 /* Pods-iOS_Movies.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MX33C5A88B;
 				INFOPLIST_FILE = iOS_Movies/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "WMAD.iOS-Movies";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
