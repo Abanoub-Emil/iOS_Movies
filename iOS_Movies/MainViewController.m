@@ -7,16 +7,21 @@
 //
 
 #import "MainViewController.h"
-
 @interface MainViewController ()
 
 @end
 
-@implementation MainViewController
+@implementation MainViewController{
+    NSString * baseUrl;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+baseUrl = @"https://api.themoviedb.org/3/movie/550?api_key=23cca2d1f3e44625a0e74b4f7435b5ea";
+    NSURL *url = [[NSURL alloc] initWithString:baseUrl];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
