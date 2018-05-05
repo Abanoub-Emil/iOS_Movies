@@ -14,6 +14,7 @@
 		EF095196209E418200F7CEBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF095195209E418200F7CEBD /* Assets.xcassets */; };
 		EF095199209E418200F7CEBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF095197209E418200F7CEBD /* LaunchScreen.storyboard */; };
 		EF09519C209E418200F7CEBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF09519B209E418200F7CEBD /* main.m */; };
+		EF21E1FF209E434900305488 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = EF21E1FE209E434900305488 /* Movie.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		EF095198209E418200F7CEBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF09519A209E418200F7CEBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF09519B209E418200F7CEBD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EF21E1FD209E434900305488 /* Movie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
+		EF21E1FE209E434900305488 /* Movie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 				EF095197209E418200F7CEBD /* LaunchScreen.storyboard */,
 				EF09519A209E418200F7CEBD /* Info.plist */,
 				EF09519B209E418200F7CEBD /* main.m */,
+				EF21E1FD209E434900305488 /* Movie.h */,
+				EF21E1FE209E434900305488 /* Movie.m */,
 			);
 			path = iOS_Movies;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 			files = (
 				EF095191209E418100F7CEBD /* ViewController.m in Sources */,
 				EF09519C209E418200F7CEBD /* main.m in Sources */,
+				EF21E1FF209E434900305488 /* Movie.m in Sources */,
 				EF09518E209E418100F7CEBD /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,7 +339,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MX33C5A88B;
 				INFOPLIST_FILE = iOS_Movies/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "WMAD.iOS-Movies";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -348,7 +357,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MX33C5A88B;
 				INFOPLIST_FILE = iOS_Movies/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "WMAD.iOS-Movies";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
