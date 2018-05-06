@@ -84,6 +84,9 @@ baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&
                     self->movie = [Movie new];
                     long myID = [[object objectForKey:@"id"]longValue];
                     NSString * sID = [NSString stringWithFormat:@"%ld", myID];
+                    if([sID isEqualToString:@"550"]){
+                        continue;
+                    }
                     NSString *myTitle =[object objectForKey:@"original_title"];
                     NSString *img= @"https://image.tmdb.org/t/p/w185";
                     NSString *myImage =[img stringByAppendingString:[object objectForKey:@"poster_path"]];
