@@ -39,6 +39,20 @@
 
 
 - (IBAction)addFavorite:(id)sender {
+    NSUserDefaults *movieIDeez = [NSUserDefaults standardUserDefaults];
+    NSMutableArray * ideez = [NSMutableArray new];
+    ideez = [[movieIDeez objectForKey:@"ideez"] mutableCopy];
+    for(NSString * DD in ideez){
+        if([DD isEqualToString:_movieDetail.ID]){
+            return;
+        }
+    }
+        [ideez addObject:_movieDetail.ID];
+    [movieIDeez setObject:ideez forKey:@"ideez"];
+    for(NSString * DD in ideez){
+        printf("%s\n",[DD UTF8String]);
+    }
+
 }
 - (IBAction)play1:(id)sender {
     NSURL *URL = [[NSURL alloc] initWithString:_movieDetail.trailer1];

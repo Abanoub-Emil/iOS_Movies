@@ -9,7 +9,7 @@
 #import "Movie.h"
 
 @implementation Movie
-- (void) setID:(long)ID andTitle:(NSString *)title andDate:(NSString *)date andRate:(NSString *)rate andImage:(NSString *)image andOverview:(NSString*)overview{
+- (void) setID:(NSString*)ID andTitle:(NSString *)title andDate:(NSString *)date andRate:(NSString *)rate andImage:(NSString *)image andOverview:(NSString*)overview{
     self.ID=ID;
     self.title=title;
     self.date=date;

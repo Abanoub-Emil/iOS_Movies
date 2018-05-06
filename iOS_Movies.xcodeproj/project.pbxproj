@@ -14,6 +14,8 @@
 		EF095196209E418200F7CEBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF095195209E418200F7CEBD /* Assets.xcassets */; };
 		EF095199209E418200F7CEBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF095197209E418200F7CEBD /* LaunchScreen.storyboard */; };
 		EF09519C209E418200F7CEBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF09519B209E418200F7CEBD /* main.m */; };
+		EF0C8D08209F14B900D081DB /* DataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0C8D07209F14B900D081DB /* DataBaseManager.m */; };
+		EF0C8D0A209F152900D081DB /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0C8D09209F152900D081DB /* libsqlite3.tbd */; };
 		EF21E1FF209E434900305488 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = EF21E1FE209E434900305488 /* Movie.m */; };
 		EF21E208209E4DC900305488 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF21E207209E4DC900305488 /* MainViewController.m */; };
 		EF21E20B209E4DDD00305488 /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF21E20A209E4DDD00305488 /* FavoriteViewController.m */; };
@@ -38,6 +40,9 @@
 		EF095198209E418200F7CEBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF09519A209E418200F7CEBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF09519B209E418200F7CEBD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EF0C8D06209F14B900D081DB /* DataBaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataBaseManager.h; sourceTree = "<group>"; };
+		EF0C8D07209F14B900D081DB /* DataBaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataBaseManager.m; sourceTree = "<group>"; };
+		EF0C8D09209F152900D081DB /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		EF21E1FD209E434900305488 /* Movie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		EF21E1FE209E434900305488 /* Movie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 		EF21E206209E4DC900305488 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -56,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF0C8D0A209F152900D081DB /* libsqlite3.tbd in Frameworks */,
 				EF21E213209E58DD00305488 /* libAFNetworking.a in Frameworks */,
 				EF21E215209E58DD00305488 /* libSDWebImage.a in Frameworks */,
 				42A78F09FBD2DE357C6FF10F /* libPods-iOS_Movies.a in Frameworks */,
@@ -77,6 +83,7 @@
 		215BF002A8BB50141FA5FCF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF0C8D09209F152900D081DB /* libsqlite3.tbd */,
 				EF21E212209E58DD00305488 /* libAFNetworking.a */,
 				EF21E214209E58DD00305488 /* libSDWebImage.a */,
 				924F1C4BA1493FD96CF8E1A0 /* libPods-iOS_Movies.a */,
@@ -115,6 +122,8 @@
 				EF21E20A209E4DDD00305488 /* FavoriteViewController.m */,
 				EF095192209E418100F7CEBD /* Main.storyboard */,
 				EF095195209E418200F7CEBD /* Assets.xcassets */,
+				EF0C8D06209F14B900D081DB /* DataBaseManager.h */,
+				EF0C8D07209F14B900D081DB /* DataBaseManager.m */,
 				EF21E1FD209E434900305488 /* Movie.h */,
 				EF21E1FE209E434900305488 /* Movie.m */,
 				EF09519A209E418200F7CEBD /* Info.plist */,
@@ -226,6 +235,7 @@
 				EF095191209E418100F7CEBD /* ViewController.m in Sources */,
 				EF09519C209E418200F7CEBD /* main.m in Sources */,
 				EF21E1FF209E434900305488 /* Movie.m in Sources */,
+				EF0C8D08209F14B900D081DB /* DataBaseManager.m in Sources */,
 				EF21E208209E4DC900305488 /* MainViewController.m in Sources */,
 				EF09518E209E418100F7CEBD /* AppDelegate.m in Sources */,
 			);

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Movie : NSObject
-@property long ID;
+@property NSString* ID;
 @property NSString * title;
 @property NSString * date;
 @property NSString * rate;
@@ -18,7 +18,7 @@
 @property NSString * trailer2;
 @property NSString * overView;
 
-- (void) setID:(long)ID andTitle:(NSString *)title andDate:(NSString *)date andRate:(NSString *)rate andImage:(NSString *)image andOverview:(NSString*)overview;
+- (void) setID:(NSString*)ID andTitle:(NSString *)title andDate:(NSString *)date andRate:(NSString *)rate andImage:(NSString *)image andOverview:(NSString*)overview;
 
 - (void) setTrail1:(NSString*)trailer1;
 - (void) setTrail2:(NSString*)trailer2;

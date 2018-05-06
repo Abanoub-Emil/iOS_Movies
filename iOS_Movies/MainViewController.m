@@ -13,22 +13,63 @@
 
 @implementation MainViewController{
     NSString * baseUrl;
+    DataBaseManager *DBManager;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    allMovies = [NSMutableArray new];
+    DBManager = [DataBaseManager sharedDBManager];
+    [DBManager createTable];
+    NSUserDefaults *movieIDeez = [NSUserDefaults standardUserDefaults];
+    NSArray * myIdeez = [movieIDeez objectForKey:@"ideez"];
+    if(myIdeez.count == 0)
+            {
+                NSMutableArray * ideez = [NSMutableArray new];
+                [movieIDeez setObject:ideez forKey:@"ideez"];
+                [movieIDeez synchronize];
+            }
     
+    allMovies = [NSMutableArray new];
+    allMovies = [DBManager selectAllMovie];
+    if(allMovies.count==0){
 baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=23cca2d1f3e44625a0e74b4f7435b5ea";
     
     [self getAllMovies:baseUrl];
     
-    
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)sort:(id)sender {
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sort"
+                                                        message:@"Sort Your Movies By "
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"Top Rated",@"Most Popular", nil];
+    
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1)
+    {
+        baseUrl = @"https://api.themoviedb.org/3/movie/top_rated?api_key=23cca2d1f3e44625a0e74b4f7435b5ea";
+        allMovies = [NSMutableArray new];
+        [self getAllMovies:baseUrl];
+    }
+    else if(buttonIndex == 2)
+    {
+        baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=23cca2d1f3e44625a0e74b4f7435b5ea";
+        allMovies = [NSMutableArray new];
+        [self getAllMovies:baseUrl];
+    }
+    
 }
 
 - (void)getAllMovies:(NSString*)url{
@@ -42,17 +83,16 @@ baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&
                 for (NSDictionary * object in results) {
                     self->movie = [Movie new];
                     long myID = [[object objectForKey:@"id"]longValue];
-//                    printf("%ld\n",myID);
+                    NSString * sID = [NSString stringWithFormat:@"%ld", myID];
                     NSString *myTitle =[object objectForKey:@"original_title"];
                     NSString *img= @"https://image.tmdb.org/t/p/w185";
                     NSString *myImage =[img stringByAppendingString:[object objectForKey:@"poster_path"]];
                     long myRates = [[object objectForKey:@"vote_average"]longValue];
                     NSString * myRate = [NSString stringWithFormat:@"%ld", myRates];
-//                    printf("%s\n",[myRate UTF8String] );
                     NSString *myDate = [object objectForKey:@"release_date"];
                     NSString *myOverView = [object objectForKey:@"overview"];
-                    [self getTrailers:myID];
-                    [self->movie setID:myID andTitle:myTitle andDate:myDate andRate:myRate andImage:myImage andOverview:myOverView];
+                    [self getTrailers:sID];
+                    [self->movie setID:sID andTitle:myTitle andDate:myDate andRate:myRate andImage:myImage andOverview:myOverView];
                     
                     [self->allMovies addObject:self->movie];
                 }
@@ -68,23 +108,20 @@ baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&
 
 - (void) printData{
     [self.myCollection reloadData];
+   
     for (Movie * m in allMovies){
-        printf("%s\n",[m.title UTF8String]);
-        printf("%s\n",[m.rate UTF8String]);
-        printf("%s\n",[m.image UTF8String]);
-        printf("%s\n",[m.overView UTF8String]);
-        printf("%s\n",[m.trailer1 UTF8String]);
-        printf("%s\n",[m.trailer2 UTF8String]);
+        
+        [DBManager insertMovie:m];
+
     }
+    
 }
 
-- (void)getTrailers:(long)ID{
+- (void)getTrailers:(NSString*)ID{
     NSString* videoUrl1 = @"https://api.themoviedb.org/3/movie/";
-    NSString * sID = [NSString stringWithFormat:@"%ld", ID];
-    NSString* videoUrlID = [videoUrl1 stringByAppendingString:sID];
+    NSString* videoUrlID = [videoUrl1 stringByAppendingString:ID];
     NSString* videoUrl2 = @"/videos?api_key=23cca2d1f3e44625a0e74b4f7435b5ea";
     NSString* videoUrl=[videoUrlID stringByAppendingString:videoUrl2];
-//    printf("%s\n",[videoUrl UTF8String]);
     NSURL *vidURL = [[NSURL alloc] initWithString:videoUrl];
     AFHTTPSessionManager *videoManager   = [AFHTTPSessionManager manager];
     [videoManager    GET:vidURL.absoluteString
@@ -92,7 +129,6 @@ baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&
                 progress:nil
                  success:^(NSURLSessionTask *task, id responseObject) {
                      NSDictionary *result =[responseObject objectForKey:@"results"];
-//                     NSLog(@"Error: %@", responseObject);
                      int i = 0;
                      for (NSDictionary * object in result) {
                          i++;
@@ -150,6 +186,7 @@ baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&
     detailsView.movieDetail=movieDetails;
     [self.navigationController pushViewController:detailsView animated:YES ];
 }
+
 
 /*
 #pragma mark - Navigation
