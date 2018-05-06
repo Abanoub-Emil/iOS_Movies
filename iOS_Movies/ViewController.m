@@ -49,9 +49,6 @@
     }
         [ideez addObject:_movieDetail.ID];
     [movieIDeez setObject:ideez forKey:@"ideez"];
-    for(NSString * DD in ideez){
-        printf("%s\n",[DD UTF8String]);
-    }
 
 }
 - (IBAction)play1:(id)sender {
