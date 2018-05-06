@@ -9,5 +9,18 @@
 #import <Foundation/Foundation.h>
 
 @interface Movie : NSObject
+@property long ID;
+@property NSString * title;
+@property NSString * date;
+@property NSString * rate;
+@property NSString * image;
+@property NSString * trailer1;
+@property NSString * trailer2;
+@property NSString * overView;
+
+- (void) setID:(long)ID andTitle:(NSString *)title andDate:(NSString *)date andRate:(NSString *)rate andImage:(NSString *)image andOverview:(NSString*)overview;
+
+- (void) setTrail1:(NSString*)trailer1;
+- (void) setTrail2:(NSString*)trailer2;
 
 @end

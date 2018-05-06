@@ -17,9 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-baseUrl = @"https://api.themoviedb.org/3/movie/550?api_key=23cca2d1f3e44625a0e74b4f7435b5ea";
-    NSURL *url = [[NSURL alloc] initWithString:baseUrl];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    allMovies = [NSMutableArray new];
+    
+baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=23cca2d1f3e44625a0e74b4f7435b5ea";
+    
+    [self getAllMovies:baseUrl];
     
     
 }
@@ -29,6 +31,94 @@ baseUrl = @"https://api.themoviedb.org/3/movie/550?api_key=23cca2d1f3e44625a0e74
     // Dispose of any resources that can be recreated.
 }
 
+- (void)getAllMovies:(NSString*)url{
+    NSURL *URL = [[NSURL alloc] initWithString:baseUrl];
+    AFHTTPSessionManager *manager   = [AFHTTPSessionManager manager];
+    [manager    GET:URL.absoluteString
+         parameters:nil
+           progress:nil
+            success:^(NSURLSessionTask *task, id responseObject) {
+                NSDictionary *results =[responseObject objectForKey:@"results"];
+                for (NSDictionary * object in results) {
+                    self->movie = [Movie new];
+                    long myID = [[object objectForKey:@"id"]longValue];
+//                    printf("%ld\n",myID);
+                    NSString *myTitle =[object objectForKey:@"original_title"];
+                    NSString *img= @"https://image.tmdb.org/t/p/w185";
+                    NSString *myImage =[img stringByAppendingString:[object objectForKey:@"poster_path"]];
+                    long myRates = [[object objectForKey:@"vote_average"]longValue];
+                    NSString * myRate = [NSString stringWithFormat:@"%ld", myRates];
+//                    printf("%s\n",[myRate UTF8String] );
+                    NSString *myDate = [object objectForKey:@"release_date"];
+                    NSString *myOverView = [object objectForKey:@"overview"];
+                    [self getTrailers:myID];
+                    [self->movie setID:myID andTitle:myTitle andDate:myDate andRate:myRate andImage:myImage andOverview:myOverView];
+                    
+                    [self->allMovies addObject:self->movie];
+                }
+                
+                
+            }
+            failure:^(NSURLSessionTask *operation, NSError *error) {
+                NSLog(@"Error: %@", error);
+            }
+     ];
+    
+}
+
+- (void) printData{
+    for (Movie * m in allMovies){
+        printf("%s\n",[m.title UTF8String]);
+        printf("%s\n",[m.rate UTF8String]);
+        printf("%s\n",[m.image UTF8String]);
+        printf("%s\n",[m.overView UTF8String]);
+        printf("%s\n",[m.trailer1 UTF8String]);
+        printf("%s\n",[m.trailer2 UTF8String]);
+    }
+}
+
+- (void)getTrailers:(long)ID{
+    NSString* videoUrl1 = @"https://api.themoviedb.org/3/movie/";
+    NSString * sID = [NSString stringWithFormat:@"%ld", ID];
+    NSString* videoUrlID = [videoUrl1 stringByAppendingString:sID];
+    NSString* videoUrl2 = @"/videos?api_key=23cca2d1f3e44625a0e74b4f7435b5ea";
+    NSString* videoUrl=[videoUrlID stringByAppendingString:videoUrl2];
+//    printf("%s\n",[videoUrl UTF8String]);
+    NSURL *vidURL = [[NSURL alloc] initWithString:videoUrl];
+    AFHTTPSessionManager *videoManager   = [AFHTTPSessionManager manager];
+    [videoManager    GET:vidURL.absoluteString
+              parameters:nil
+                progress:nil
+                 success:^(NSURLSessionTask *task, id responseObject) {
+                     NSDictionary *result =[responseObject objectForKey:@"results"];
+//                     NSLog(@"Error: %@", responseObject);
+                     int i = 0;
+                     for (NSDictionary * object in result) {
+                         i++;
+                         NSString * myTrail = @"https://www.youtube.com/watch?v=";
+                         if(i==1){
+                             NSString * myTrailer1 = [myTrail stringByAppendingString:[object objectForKey:@"key"]];
+                             for (Movie *m in self->allMovies){
+                                 if(m.ID == ID)
+                                 [m setTrail1:myTrailer1];
+                             }
+                         }
+                         NSString * myTrailer2 = [myTrail stringByAppendingString:[object objectForKey:@"key"]];
+                         for (Movie *m in self->allMovies){
+                            if( m.ID == ID)
+                             [m setTrail2:myTrailer2];
+                         }
+                         if(i>2)
+                             break;
+                     }
+                    [self printData];
+                     
+                 }
+                 failure:^(NSURLSessionTask *operation, NSError *error) {
+                     NSLog(@"Error: %@", error);
+                 }
+     ];
+}
 /*
 #pragma mark - Navigation
 
