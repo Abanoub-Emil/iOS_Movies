@@ -22,6 +22,15 @@
 //    [self.view addSubview:separator];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    _movieTitle.text = _movieDetail.title;
+    _movieDate.text = _movieDetail.date;
+    _movieRate.text = [_movieDetail.rate stringByAppendingString:@"/10"];
+    [_movieOverView setText:_movieDetail.overView];
+    
+    [_movieImage sd_setImageWithURL:[NSURL URLWithString:_movieDetail.image]
+               placeholderImage:nil];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -29,4 +38,15 @@
 }
 
 
+- (IBAction)addFavorite:(id)sender {
+}
+- (IBAction)play1:(id)sender {
+    NSURL *URL = [[NSURL alloc] initWithString:_movieDetail.trailer1];
+        [[UIApplication sharedApplication] openURL:URL options:@{} completionHandler:nil];
+}
+
+- (IBAction)play2:(id)sender {
+    NSURL *URL = [[NSURL alloc] initWithString:_movieDetail.trailer2];
+    [[UIApplication sharedApplication] openURL:URL options:@{} completionHandler:nil];
+}
 @end

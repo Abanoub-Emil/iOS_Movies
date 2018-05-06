@@ -10,11 +10,13 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <AFNetworking/AFNetworking.h>
 #import "Movie.h"
-@interface MainViewController : UIViewController
+#import "ViewController.h"
+@interface MainViewController : UIViewController <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 {
     NSMutableArray * allMovies ;
     Movie * movie;
 }
 - (void)getAllMovies:(NSString*)url;
 - (void)getTrailers:(long)ID;
+@property (weak, nonatomic) IBOutlet UICollectionView *myCollection;
 @end

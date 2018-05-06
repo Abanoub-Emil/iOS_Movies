@@ -67,6 +67,7 @@ baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&
 }
 
 - (void) printData{
+    [self.myCollection reloadData];
     for (Movie * m in allMovies){
         printf("%s\n",[m.title UTF8String]);
         printf("%s\n",[m.rate UTF8String]);
@@ -119,6 +120,37 @@ baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&
                  }
      ];
 }
+
+#pragma mark <UICollectionViewDataSource>
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return allMovies.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionCell" forIndexPath:indexPath];
+    Movie * cellMovie =[allMovies objectAtIndex:indexPath.row];
+    UIImageView * myImage = [cell viewWithTag:1];
+    [myImage sd_setImageWithURL:[NSURL URLWithString:cellMovie.image]
+               placeholderImage:nil];
+
+    return cell;
+}
+
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    ViewController * detailsView = [self.storyboard instantiateViewControllerWithIdentifier:@"detailsView"];
+    Movie * movieDetails;
+    movieDetails = [allMovies objectAtIndex:indexPath.row];
+    detailsView.movieDetail=movieDetails;
+    [self.navigationController pushViewController:detailsView animated:YES ];
+}
+
 /*
 #pragma mark - Navigation
 
