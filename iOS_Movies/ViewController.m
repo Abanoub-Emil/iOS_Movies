@@ -54,10 +54,12 @@
 - (IBAction)play1:(id)sender {
     NSURL *URL = [[NSURL alloc] initWithString:_movieDetail.trailer1];
         [[UIApplication sharedApplication] openURL:URL options:@{} completionHandler:nil];
+    printf("%s",[_movieDetail.trailer1 UTF8String]);
 }
 
 - (IBAction)play2:(id)sender {
     NSURL *URL = [[NSURL alloc] initWithString:_movieDetail.trailer2];
     [[UIApplication sharedApplication] openURL:URL options:@{} completionHandler:nil];
+     printf("%s",[_movieDetail.trailer1 UTF8String]);
 }
 @end

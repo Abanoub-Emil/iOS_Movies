@@ -31,6 +31,18 @@
     
     allMovies = [NSMutableArray new];
     allMovies = [DBManager selectAllMovie];
+    if(allMovies.count!=0){
+//        Movie * MS = [allMovies objectAtIndex:0];
+//        printf("%s",[MS.trailer1 UTF8String]);
+//        printf("%s",[MS.trailer2 UTF8String]);
+//        printf("%s",[MS.rate UTF8String]);
+//        printf("%s",[MS.title UTF8String]);
+//        printf("%s",[MS.date UTF8String]);
+//        printf("%s",[MS.image UTF8String]);
+//        printf("%s",[MS.ID UTF8String]);
+//        printf("%s",[MS.overView UTF8String]);
+        
+    }
     if(allMovies.count==0){
 baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=23cca2d1f3e44625a0e74b4f7435b5ea";
     
@@ -111,13 +123,6 @@ baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&
 
 - (void) printData{
     [self.myCollection reloadData];
-   
-    for (Movie * m in allMovies){
-        
-        [DBManager insertMovie:m];
-
-    }
-    
 }
 
 - (void)getTrailers:(NSString*)ID{
@@ -139,19 +144,31 @@ baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&
                          if(i==1){
                              NSString * myTrailer1 = [myTrail stringByAppendingString:[object objectForKey:@"key"]];
                              for (Movie *m in self->allMovies){
-                                 if(m.ID == ID)
+                                 if(m.ID == ID){
                                  [m setTrail1:myTrailer1];
+                                     break;
+                                 }
                              }
                          }
                          NSString * myTrailer2 = [myTrail stringByAppendingString:[object objectForKey:@"key"]];
-                         for (Movie *m in self->allMovies){
-                            if( m.ID == ID)
-                             [m setTrail2:myTrailer2];
+//                         for (Movie *m in self->allMovies){
+//                            if( m.ID == ID)
+//                             [m setTrail2:myTrailer2];
+//                         }
+                         for (int j = 0; j<self->allMovies.count; j++) {
+                             if([[[self->allMovies objectAtIndex:j] ID] isEqualToString:ID]){
+                             [[self->allMovies objectAtIndex:j] setTrailer2:myTrailer2];
+                                 break;
+                             }
                          }
                          if(i>2)
                              break;
                      }
-                    [self printData];
+                     for (Movie * m in self->allMovies){
+                         printf("%s\n",[m.trailer2 UTF8String]);
+                         
+                     }
+                     [self printData];
                      
                  }
                  failure:^(NSURLSessionTask *operation, NSError *error) {
@@ -163,6 +180,7 @@ baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+   
     return 1;
 }
 
@@ -183,6 +201,9 @@ baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    for (Movie * m in self->allMovies){
+        [self->DBManager insertMovie:m];
+    }
     ViewController * detailsView = [self.storyboard instantiateViewControllerWithIdentifier:@"detailsView"];
     Movie * movieDetails;
     movieDetails = [allMovies objectAtIndex:indexPath.row];
