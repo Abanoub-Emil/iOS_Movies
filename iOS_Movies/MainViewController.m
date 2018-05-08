@@ -31,18 +31,7 @@
     
     allMovies = [NSMutableArray new];
     allMovies = [DBManager selectAllMovie];
-    if(allMovies.count!=0){
-//        Movie * MS = [allMovies objectAtIndex:0];
-//        printf("%s",[MS.trailer1 UTF8String]);
-//        printf("%s",[MS.trailer2 UTF8String]);
-//        printf("%s",[MS.rate UTF8String]);
-//        printf("%s",[MS.title UTF8String]);
-//        printf("%s",[MS.date UTF8String]);
-//        printf("%s",[MS.image UTF8String]);
-//        printf("%s",[MS.ID UTF8String]);
-//        printf("%s",[MS.overView UTF8String]);
-        
-    }
+
     if(allMovies.count==0){
 baseUrl = @"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=23cca2d1f3e44625a0e74b4f7435b5ea";
     
